@@ -1,0 +1,30 @@
+[90m= [39m[
+    {#5267
+      +"[1mname[22m": "[32mfailed_jobs[39m",
+    },
+    {#5282
+      +"[1mname[22m": "[32mlibros[39m",
+    },
+    {#5281
+      +"[1mname[22m": "[32mmigrations[39m",
+    },
+    {#5280
+      +"[1mname[22m": "[32mpassword_reset_tokens[39m",
+    },
+    {#5279
+      +"[1mname[22m": "[32mpersonal_access_tokens[39m",
+    },
+    {#5271
+      +"[1mname[22m": "[32mprestamos[39m",
+    },
+    {#5255
+      +"[1mname[22m": "[32msqlite_sequence[39m",
+    },
+    {#5243
+      +"[1mname[22m": "[32musers[39m",
+    },
+    {#5244
+      +"[1mname[22m": "[32musuarios[39m",
+    },
+  ]
+
