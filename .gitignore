@@ -1,0 +1,113 @@
+# ================================================================================
+# .GITIGNORE 
+# ================================================================================
+
+
+# === HERRAMIENTAS DE DESARROLLO ===
+# Archivos generados automáticamente por sistemas operativos y editores
+.DS_Store                # macOS: Metadatos del Finder (contiene info de iconos/vistas)
+Thumbs.db               # Windows: Cache de miniaturas de imágenes
+*.swp                   # Vim: Archivos de intercambio temporales durante edición
+*.swo                   # Vim: Archivos de intercambio temporales adicionales
+*~                      # Editores Unix: Archivos de respaldo automático
+
+# === IDEs Y EDITORES ===
+# Configuraciones personales que NO deben compartirse entre desarrolladores
+.vscode/                # VS Code: Settings, extensions, debugging configs personales
+.idea/                  # JetBrains: PHPStorm/WebStorm configuración personal
+*.sublime-project       # Sublime Text: Archivos de proyecto específicos
+*.sublime-workspace     # Sublime Text: Estado del workspace personal
+
+# === BACKEND (Laravel/PHP) ===
+
+# DEPENDENCIAS REGENERABLES (Composer)
+backend/vendor/         # Composer: Dependencies PHP (100MB+, se regeneran con 'composer install')
+                       # CRÍTICO: Nunca versionar dependencies - solo versionar composer.json/lock
+
+# CONFIGURACIÓN SENSIBLE Y ENTORNO
+backend/.env            # Laravel: Variables de entorno (¡CONTRASEÑAS, API KEYS, SECRETS!)
+backend/.env.backup     # Laravel: Respaldos de configuración (también sensibles)
+backend/.env.production # Laravel: Configuración de producción (ULTRA SENSIBLE)
+backend/.env.testing    # Laravel: Configuración de testing local
+
+# ARCHIVOS TEMPORALES Y CACHE
+backend/storage/logs/   # Laravel: Logs que cambian constantemente (rotación diaria)
+backend/storage/framework/cache/    # Laravel: Cache de aplicación (se regenera)
+backend/storage/framework/sessions/ # Laravel: Sesiones temporales de usuarios
+backend/storage/framework/views/    # Laravel: Vistas compiladas de Blade
+backend/bootstrap/cache/            # Laravel: Cache de arranque de aplicación
+
+# BASE DE DATOS LOCAL
+backend/database/database.sqlite    # SQLite: Base de datos de desarrollo local
+backend/storage/app/public          # Laravel: Enlace simbólico a storage público
+
+# === FRONTEND (React/Node.js) ===
+
+# DEPENDENCIAS MASIVAS (npm/yarn)
+frontend/node_modules/  # npm: Dependencies JavaScript (¡CRÍTICO! 100,000+ archivos, 100MB+)
+                       # Se regenera con 'npm install' - NUNCA versionar
+
+# BUILDS Y DISTRIBUCIÓN
+frontend/build/         # React: Archivos compilados para producción
+frontend/dist/          # Build tools: Distribución optimizada y minificada
+frontend/.next/         # Next.js: Cache de build (si usamos Next.js en futuro)
+
+# CONFIGURACIÓN DE ENTORNO FRONTEND
+frontend/.env.local     # React: Variables de entorno locales (API URLs, flags)
+frontend/.env.development.local  # React: Config específica de desarrollo
+frontend/.env.production.local   # React: Config específica de producción
+
+# LOGS Y DEBUG
+frontend/npm-debug.log* # npm: Logs de debug cuando fallan instalaciones
+frontend/yarn-debug.log* # Yarn: Logs de debug de Yarn package manager
+frontend/yarn-error.log* # Yarn: Logs de errores específicos
+frontend/lerna-debug.log* # Lerna: Si usamos monorepo (futuro)
+
+# === BASE DE DATOS ===
+
+*.sqlite                # SQLite: Todos los archivos de base de datos SQLite
+*.sqlite3               # SQLite: Variante de extensión alternativa
+*.db                    # Genérico: Otros archivos de base de datos
+database.sql            # MySQL: Dumps de base de datos con datos sensibles
+*.sql.gz                # Comprimidos: Backups de base de datos
+
+# === DOCKER (Preparación para futuro) ===
+# Configuraciones específicas de entorno de desarrollo
+.env.docker             # Docker: Variables específicas de contenedores
+docker-compose.override.yml  # Docker: Overrides locales de compose
+.dockerignore           # Docker: Archivos a ignorar en build context
+
+# === DEPENDENCIAS Y BUILDS GLOBALES ===
+# Por si acaso se instalan dependencias en raíz del proyecto
+/node_modules/          # Node.js: Dependencias en raíz (no debería pasar)
+/vendor/                # PHP: Dependencias en raíz (no debería pasar)
+*.tar.gz                # Archivos: Comprimidos temporales de descargas
+*.zip                   # Archivos: Comprimidos temporales
+*.rar                   # Archivos: Comprimidos WinRAR
+
+# === LOGS Y ARCHIVOS TEMPORALES ===
+*.log                   # General: Todos los archivos de log del sistema
+/logs/                  # General: Carpeta de logs global
+/tmp/                   # General: Archivos temporales del sistema
+.tmp/                   # General: Carpeta temporal oculta
+.cache/                 # General: Cache de herramientas diversas
+
+# === TESTING Y COVERAGE ===
+# Artefactos de testing que se regeneran en cada ejecución
+/coverage/              # Testing: Reportes HTML de cobertura de pruebas
+.nyc_output/            # NYC: Output de cobertura de JavaScript
+.phpunit.result.cache   # PHPUnit: Cache de resultados de pruebas PHP
+/test-results/          # Jest/otros: Resultados de testing
+
+# === DOCUMENTACIÓN GENERADA ===
+# Documentación que se genera automáticamente desde código
+/docs/api/generated/    # Documentación de API generada automáticamente
+/docs/coverage/         # Documentación de coverage generada
+
+# === ARCHIVOS DE SISTEMA Y BACKUPS ===
+# Archivos que no deben estar en control de versiones
+*.bak                   # Backups: Archivos de respaldo genéricos
+*.backup                # Backups: Archivos de respaldo explícitos
+*.orig                  # Git: Archivos originales de merge conflicts
+*.rej                   # Git: Archivos rechazados en patches
+
