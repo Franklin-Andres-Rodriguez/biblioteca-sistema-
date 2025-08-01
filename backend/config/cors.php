@@ -11,12 +11,9 @@ return [
     | Siguiendo las mejores prácticas de seguridad de OWASP mientras
     | permitimos el desarrollo local fluido.
     |
-    | Referencias:
-    | - OWASP CORS Security Cheat Sheet
-    | - Laravel CORS Package Documentation
-    | - Mozilla Developer Network CORS Guide
-    |
     */
+
+    'paths' => ['api/*', 'sanctum/csrf-cookie'],
 
     /*
     |--------------------------------------------------------------------------
@@ -24,10 +21,8 @@ return [
     |--------------------------------------------------------------------------
     |
     | Métodos HTTP permitidos para requests cross-origin.
-    | Incluimos todos los métodos REST necesarios para nuestra API.
     |
     */
-
     'allowed_methods' => ['*'],
 
     /*
@@ -35,18 +30,14 @@ return [
     | Allowed Origins
     |--------------------------------------------------------------------------
     |
-    | Origins permitidos para desarrollo local.
-    | En producción, especificar dominios exactos por seguridad.
-    |
-    | Desarrollo: React típicamente corre en puerto 3000
-    | Producción: Cambiar a dominios específicos como ['https://miapp.com']
+    | Origins permitidos explícitamente.
+    | Se recomienda especificar en producción.
     |
     */
-
     'allowed_origins' => [
-        'http://localhost:3000',    // React development server
-        'http://127.0.0.1:3000',   // Alternative localhost
-        'http://localhost:3001',   // Backup port
+        'http://localhost:3000',
+        'http://127.0.0.1:3000',
+        'http://localhost:3001',
         'http://127.0.0.1:3001',
     ],
 
@@ -55,26 +46,20 @@ return [
     | Allowed Origins Patterns
     |--------------------------------------------------------------------------
     |
-    | Patrones regex para origins dinámicos.
-    | Útil para subdominios o puertos variables en desarrollo.
+    | Evitado para evitar conflictos con 'allowed_origins'.
+    | Si usas patrones, Laravel ignorará 'allowed_origins'.
     |
     */
-
-    'allowed_origins_patterns' => [
-        // Permitir puertos 3000-3010 en localhost para desarrollo
-        '/^http:\/\/(localhost|127\.0\.0\.1):(300[0-9]|301[0])$/'
-    ],
+    'allowed_origins_patterns' => [],
 
     /*
     |--------------------------------------------------------------------------
     | Allowed Headers
     |--------------------------------------------------------------------------
     |
-    | Headers permitidos en requests cross-origin.
-    | Incluimos headers estándar para APIs REST con autenticación.
+    | Headers permitidos. Se permite todo para flexibilidad en desarrollo.
     |
     */
-
     'allowed_headers' => ['*'],
 
     /*
@@ -82,18 +67,16 @@ return [
     | Exposed Headers
     |--------------------------------------------------------------------------
     |
-    | Headers que el browser puede acceder desde JavaScript.
-    | Útil para pagination links, rate limiting info, etc.
+    | Headers accesibles desde el frontend (ej. paginación, rate limit).
     |
     */
-
     'exposed_headers' => [
-        'X-Total-Count',        // Total de registros (paginación)
-        'X-Per-Page',          // Registros por página
-        'X-Current-Page',      // Página actual
-        'X-Last-Page',         // Última página
-        'X-Rate-Limit-Limit',  // Límite de rate limiting
-        'X-Rate-Limit-Remaining' // Requests restantes
+        'X-Total-Count',
+        'X-Per-Page',
+        'X-Current-Page',
+        'X-Last-Page',
+        'X-Rate-Limit-Limit',
+        'X-Rate-Limit-Remaining',
     ],
 
     /*
@@ -101,11 +84,9 @@ return [
     | Max Age
     |--------------------------------------------------------------------------
     |
-    | Tiempo en segundos que el browser puede cachear la respuesta preflight.
-    | 1 hora = 3600 segundos (balance entre performance y flexibilidad)
+    | Cacheo de respuesta preflight en segundos (1 hora).
     |
     */
-
     'max_age' => 3600,
 
     /*
@@ -113,11 +94,9 @@ return [
     | Supports Credentials
     |--------------------------------------------------------------------------
     |
-    | Permitir cookies y headers de autenticación en requests cross-origin.
-    | Necesario para autenticación con sessions o tokens.
+    | Requerido si tu frontend incluye cookies o auth headers.
     |
     */
-
     'supports_credentials' => true,
 
 ];
